@@ -11,6 +11,14 @@ else
   echo "✓ Domena ustawiona"
 fi
 
+# wersje CSS/JS w linkach muszą odpowiadać aktualnym plikom (inaczej: ./scripts/bump-version.sh)
+css_v="$(sha1sum assets/css/styles.css | cut -c1-8)"; js_v="$(sha1sum assets/js/main.js | cut -c1-8)"
+if grep -q "styles.css?v=${css_v}" index.html && grep -q "main.js?v=${js_v}" index.html; then
+  echo "✓ Wersje CSS/JS (cache-busting) aktualne"
+else
+  echo "✗ Wersje CSS/JS w index.html są nieaktualne – uruchom scripts/bump-version.sh"; fail=1
+fi
+
 for f in index.html 404.html robots.txt sitemap.xml site.webmanifest .htaccess \
          assets/css/styles.css assets/js/main.js assets/img/favicon.svg assets/img/favicon-32.png \
          assets/img/apple-touch-icon.png assets/img/og-image.png \

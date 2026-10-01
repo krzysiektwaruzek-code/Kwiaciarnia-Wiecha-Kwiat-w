@@ -17,7 +17,7 @@ assets/css/styles.css   style (tokeny kolorów na górze pliku)
 assets/js/main.js       menu, animacje wejścia, formularz, mapa na kliknięcie
 assets/fonts/           fonty Fraunces i Manrope (self-hosted, licencja OFL)
 assets/img/             favicon, ikony, grafika Open Graph
-scripts/                set-domain.sh, predeploy-check.sh, og-image.html (źródło grafiki OG)
+scripts/                set-domain.sh, bump-version.sh, predeploy-check.sh, og-image.html (źródło grafiki OG)
 robots.txt, sitemap.xml, site.webmanifest, .htaccess
 docs/RESEARCH.md        źródła i audyt treści
 ```
@@ -28,6 +28,16 @@ docs/RESEARCH.md        źródła i audyt treści
 python3 -m http.server 8000
 # otwórz http://localhost:8000
 ```
+
+## Po każdej zmianie CSS lub JS
+
+Pliki CSS/JS są cache'owane przez przeglądarkę przez tydzień (`.htaccess`). Żeby nowy HTML nigdy nie trafił na stary arkusz stylów, linki w HTML mają parametr wersji `?v=<hash>`. Po edycji `assets/css/styles.css` lub `assets/js/main.js` uruchom przed commitem:
+
+```bash
+./scripts/bump-version.sh
+```
+
+`./scripts/predeploy-check.sh` zgłosi błąd, jeśli wersje są nieaktualne. Jeśli po wdrożeniu widzisz „połamaną" stronę, odśwież twardo (Ctrl+Shift+R) i sprawdź, czy wgrały się wszystkie pliki z `assets/`.
 
 ## Przed publikacją (checklista)
 

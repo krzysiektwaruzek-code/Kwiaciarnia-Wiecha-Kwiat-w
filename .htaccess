@@ -31,7 +31,7 @@ AddDefaultCharset UTF-8
   ExpiresByType font/woff2 "access plus 1 year"
   ExpiresByType image/png "access plus 1 year"
   ExpiresByType image/svg+xml "access plus 1 year"
-  # CSS i JS: krótszy cache, bo pliki nie mają hasha w nazwie
+  # CSS i JS: linki w HTML mają ?v=<hash> (scripts/bump-version.sh), więc nowy HTML zawsze pobiera nowe pliki
   ExpiresByType text/css "access plus 1 week"
   ExpiresByType application/javascript "access plus 1 week"
   ExpiresByType text/javascript "access plus 1 week"

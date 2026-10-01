@@ -57,6 +57,8 @@
   --sage: #b7c8b5;
   --sage-2: #dce6d9;
   --clay: #c58a64;
+  --deco-line: #9dbaa3;
+  --deco-rose: #dba0b3;
   --line: rgba(27, 40, 34, 0.14);
   --line-dark: rgba(243, 237, 226, 0.16);
 
@@ -1365,24 +1367,27 @@ select.field__control {
 /* 10. DEKORACJE TŁA --------------------------------------------------------
    Linearne gałązki, kontury kwiatów, okręgi i płatki. Wszystko jest ozdobą
    (aria-hidden), leży pod treścią i nie wpływa na układ. */
+.dl,
+.dl * {
+  vector-effect: non-scaling-stroke;
+}
 .dl {
   fill: none;
   stroke: currentColor;
-  stroke-width: 1.25;
+  stroke-width: 1.1;
   stroke-linecap: round;
   stroke-linejoin: round;
-  vector-effect: non-scaling-stroke;
 }
 .dl--fill {
   fill: currentColor;
-  fill-opacity: 0.1;
+  fill-opacity: 0.22;
 }
 .deco {
   position: absolute;
   display: block;
   height: auto;
-  color: var(--forest-2);
-  opacity: 0.2;
+  color: var(--deco-line);
+  opacity: 0.5;
 }
 .deco--sprig {
   width: 12rem;
@@ -1398,19 +1403,19 @@ select.field__control {
 }
 .section--dark .deco,
 .site-footer .deco {
-  color: var(--on-dark);
+  color: var(--sage);
 }
 .ring {
   position: absolute;
   aspect-ratio: 1;
   border: 1px solid currentColor;
   border-radius: 50%;
-  color: var(--forest-2);
-  opacity: 0.12;
+  color: var(--deco-line);
+  opacity: 0.45;
 }
 .section--dark .ring {
-  color: var(--on-dark);
-  opacity: 0.09;
+  color: var(--sage);
+  opacity: 0.14;
 }
 .ring--a {
   width: 40rem;
@@ -1445,21 +1450,22 @@ select.field__control {
   left: -2.5rem;
   bottom: -1rem;
   width: 10rem;
+  opacity: 0.6;
   transform: rotate(14deg);
 }
 .hero-sprig-b {
   left: 47%;
   bottom: -3rem;
   width: 11rem;
-  opacity: 0.15;
+  opacity: 0.45;
   transform: rotate(-10deg);
 }
 .hero-bloom {
   right: -12rem;
   top: -4rem;
   width: 30rem;
-  color: var(--rose);
-  opacity: 0.14;
+  color: var(--deco-rose);
+  opacity: 0.4;
   transform: rotate(-12deg);
 }
 .hero__art::before,
@@ -1476,11 +1482,11 @@ select.field__control {
 }
 .hero__art::before {
   width: 132%;
-  border: 1px solid rgba(31, 51, 41, 0.16);
+  border: 1px solid rgba(157, 186, 163, 0.55);
 }
 .hero__art::after {
   width: 172%;
-  border: 1px dashed rgba(154, 61, 88, 0.24);
+  border: 1px dashed rgba(219, 160, 179, 0.6);
 }
 .petals--hero .petal:nth-child(1) { left: 6%;  top: 18%; --s: 26px; --c: var(--rose);    --o: 0.45; --r: 25deg;  --dur: 19s; --dx: 18px;  --dy: 30px; }
 .petals--hero .petal:nth-child(2) { left: 41%; top: 10%; --s: 18px; --c: #86a38b;         --o: 0.6;  --r: -30deg; --dur: 23s; --dx: -14px; --dy: 24px; --delay: -6s; }
@@ -1496,7 +1502,7 @@ select.field__control {
   top: 1.5rem;
   width: 21rem;
   color: var(--rose-light);
-  opacity: 0.16;
+  opacity: 0.18;
   transform: rotate(14deg);
 }
 .offer .ring--a {
@@ -1508,7 +1514,7 @@ select.field__control {
   left: -3rem;
   bottom: -2rem;
   width: 12rem;
-  opacity: 0.14;
+  opacity: 0.22;
   transform: rotate(8deg);
 }
 .petals--dark .petal:nth-child(1) { left: 8%;  top: 20%; --s: 24px; --c: var(--rose-light); --o: 0.6; --r: 30deg;  --dur: 22s; --dx: 16px;  --dy: 28px; }
@@ -1521,17 +1527,17 @@ select.field__control {
   left: 3%;
   bottom: 12%;
   width: 14rem;
-  opacity: 0.17;
+  opacity: 0.55;
 }
 .about-sprig {
   right: -2rem;
   bottom: 10%;
   width: 10rem;
-  opacity: 0.16;
+  opacity: 0.55;
   transform: rotate(-10deg);
 }
 .petals--about .petal:nth-child(1) { left: 46%; top: 20%; --s: 22px; --c: var(--blush-2); --o: 0.7;  --r: 35deg;  --dur: 23s; --dx: 16px;  --dy: 26px; }
-.petals--about .petal:nth-child(2) { left: 6%;  top: 30%; --s: 18px; --c: #86a38b;        --o: 0.5;  --r: -50deg; --dur: 26s; --dx: 14px;  --dy: 22px; --delay: -9s; }
+.petals--about .petal:nth-child(2) { left: 31%; top: 54%; --s: 18px; --c: #86a38b;        --o: 0.5;  --r: -50deg; --dur: 26s; --dx: 14px;  --dy: 22px; --delay: -9s; }
 .petals--about .petal:nth-child(3) { left: 92%; top: 78%; --s: 26px; --c: var(--rose);    --o: 0.3;  --r: 110deg; --dur: 21s; --dx: -16px; --dy: -24px; --delay: -5s; }
 .petals--about .petal:nth-child(4) { left: 24%; top: 88%; --s: 16px; --c: var(--clay);    --o: 0.45; --r: 15deg;  --dur: 24s; --dx: 12px;  --dy: -18px; --delay: -13s; }
 
@@ -1540,15 +1546,15 @@ select.field__control {
   right: -3rem;
   top: 6rem;
   width: 11rem;
-  opacity: 0.15;
+  opacity: 0.55;
   transform: rotate(18deg);
 }
 .contact-bloom {
   left: -9rem;
   bottom: 6rem;
   width: 24rem;
-  color: var(--rose);
-  opacity: 0.1;
+  color: var(--deco-rose);
+  opacity: 0.32;
 }
 .contact .ring--a {
   right: auto;
@@ -1571,14 +1577,15 @@ select.field__control {
   right: 4%;
   bottom: -3rem;
   width: 12rem;
-  opacity: 0.14;
+  opacity: 0.2;
   transform: rotate(-8deg);
 }
 .footer-bloom {
   left: -8rem;
   top: -6rem;
   width: 22rem;
-  opacity: 0.07;
+  color: var(--rose-light);
+  opacity: 0.1;
 }
 
 /* — mobile: mniej i mniejsze elementy — */
@@ -1600,6 +1607,7 @@ select.field__control {
     right: -6rem;
     top: 3rem;
     width: 13rem;
+    opacity: 0.32;
   }
   .offer-bloom {
     right: -2rem;
@@ -1609,7 +1617,7 @@ select.field__control {
   }
   .offer-sprig {
     left: -4.5rem;
-    opacity: 0.1;
+    opacity: 0.16;
   }
   .offer .ring--a {
     right: -9rem;
