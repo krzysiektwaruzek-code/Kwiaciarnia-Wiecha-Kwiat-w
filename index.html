@@ -86,6 +86,50 @@
     <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
     <symbol id="i-ext" viewBox="0 0 24 24"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+
+    <!-- Dekoracje tła (linearne, kolor przez currentColor) -->
+    <defs>
+      <g id="d-leaf">
+        <path class="dl dl--fill" d="M0 0C14-22 44-30 72-12 52 10 22 16 0 0z"/>
+        <path class="dl" d="M3-1C24-10 46-14 66-12"/>
+      </g>
+    </defs>
+    <symbol id="d-sprig" viewBox="0 0 200 480">
+      <path class="dl" d="M100 480C94 400 112 330 102 250S96 90 106 14"/>
+      <use href="#d-leaf" transform="translate(99 432) rotate(-34)"/>
+      <use href="#d-leaf" transform="translate(104 352) rotate(-40) scale(1.1)"/>
+      <use href="#d-leaf" transform="translate(101 266) rotate(-38)"/>
+      <use href="#d-leaf" transform="translate(98 182) rotate(-42) scale(.9)"/>
+      <use href="#d-leaf" transform="translate(101 108) rotate(-50) scale(.72)"/>
+      <use href="#d-leaf" transform="translate(97 396) scale(-1 1) rotate(-30) scale(1.05)"/>
+      <use href="#d-leaf" transform="translate(102 312) scale(-1 1) rotate(-36)"/>
+      <use href="#d-leaf" transform="translate(99 226) scale(-1 1) rotate(-34) scale(.95)"/>
+      <use href="#d-leaf" transform="translate(98 144) scale(-1 1) rotate(-44) scale(.8)"/>
+      <ellipse class="dl dl--fill" cx="106" cy="12" rx="5" ry="11"/>
+    </symbol>
+    <symbol id="d-bloom" viewBox="-70 -70 140 140">
+      <g class="dl">
+        <ellipse cy="-40" rx="12.5" ry="26" transform="rotate(0)"/>
+        <ellipse cy="-40" rx="12.5" ry="26" transform="rotate(36)"/>
+        <ellipse cy="-40" rx="12.5" ry="26" transform="rotate(72)"/>
+        <ellipse cy="-40" rx="12.5" ry="26" transform="rotate(108)"/>
+        <ellipse cy="-40" rx="12.5" ry="26" transform="rotate(144)"/>
+        <ellipse cy="-40" rx="12.5" ry="26" transform="rotate(180)"/>
+        <ellipse cy="-40" rx="12.5" ry="26" transform="rotate(216)"/>
+        <ellipse cy="-40" rx="12.5" ry="26" transform="rotate(252)"/>
+        <ellipse cy="-40" rx="12.5" ry="26" transform="rotate(288)"/>
+        <ellipse cy="-40" rx="12.5" ry="26" transform="rotate(324)"/>
+        <circle r="11"/>
+        <circle r="3.5"/>
+      </g>
+    </symbol>
+    <symbol id="d-arch" viewBox="0 0 240 320">
+      <path class="dl" d="M8 320V128C8 62 58 8 120 8s112 54 112 120v192"/>
+      <path class="dl" d="M26 320V132C26 74 68 28 120 28s94 46 94 104v188"/>
+      <circle class="dl" cx="164" cy="104" r="26"/>
+      <circle class="dl" cx="164" cy="104" r="40"/>
+    </symbol>
+    <symbol id="d-petal" viewBox="0 0 24 40"><path d="M12 0C25 10 25 30 12 40 -1 30 -1 10 12 0z"/></symbol>
   </svg>
 
   <!-- ===== NAGŁÓWEK ===== -->
@@ -119,7 +163,12 @@
 
     <!-- ===== HERO ===== -->
     <section class="hero" id="top" aria-labelledby="hero-title">
-      <div class="bg-decor" aria-hidden="true"></div>
+      <div class="bg-decor" aria-hidden="true">
+        <svg class="deco deco--sprig hero-sprig-a" viewBox="0 0 200 480" focusable="false"><use href="#d-sprig"/></svg>
+        <svg class="deco deco--sprig hero-sprig-b" viewBox="0 0 200 480" focusable="false"><use href="#d-sprig"/></svg>
+        <svg class="deco deco--bloom hero-bloom" viewBox="0 0 140 140" focusable="false"><use href="#d-bloom"/></svg>
+        <div class="petals petals--hero"><svg class="petal" viewBox="0 0 24 40" focusable="false"><use href="#d-petal"/></svg><svg class="petal" viewBox="0 0 24 40" focusable="false"><use href="#d-petal"/></svg><svg class="petal" viewBox="0 0 24 40" focusable="false"><use href="#d-petal"/></svg><svg class="petal" viewBox="0 0 24 40" focusable="false"><use href="#d-petal"/></svg><svg class="petal" viewBox="0 0 24 40" focusable="false"><use href="#d-petal"/></svg><svg class="petal" viewBox="0 0 24 40" focusable="false"><use href="#d-petal"/></svg><svg class="petal" viewBox="0 0 24 40" focusable="false"><use href="#d-petal"/></svg></div>
+      </div>
       <div class="container hero__grid">
         <div class="hero__copy">
           <h1 class="hero__title" id="hero-title" data-rise style="--i:0">
@@ -289,7 +338,12 @@
 
     <!-- ===== OFERTA ===== -->
     <section class="section section--dark offer" id="oferta" aria-labelledby="oferta-title">
-      <div class="bg-decor" aria-hidden="true"></div>
+      <div class="bg-decor" aria-hidden="true">
+        <svg class="deco deco--bloom offer-bloom" viewBox="0 0 140 140" focusable="false"><use href="#d-bloom"/></svg>
+        <svg class="deco deco--sprig offer-sprig" viewBox="0 0 200 480" focusable="false"><use href="#d-sprig"/></svg>
+        <span class="ring ring--a"></span><span class="ring ring--b"></span>
+        <div class="petals petals--dark"><svg class="petal" viewBox="0 0 24 40" focusable="false"><use href="#d-petal"/></svg><svg class="petal" viewBox="0 0 24 40" focusable="false"><use href="#d-petal"/></svg><svg class="petal" viewBox="0 0 24 40" focusable="false"><use href="#d-petal"/></svg><svg class="petal" viewBox="0 0 24 40" focusable="false"><use href="#d-petal"/></svg></div>
+      </div>
       <div class="container">
         <div class="offer__head reveal">
           <div>
@@ -343,7 +397,11 @@
 
     <!-- ===== O KWIACIARNI ===== -->
     <section class="section about" id="o-kwiaciarni" aria-labelledby="o-title">
-      <div class="bg-decor" aria-hidden="true"></div>
+      <div class="bg-decor" aria-hidden="true">
+        <svg class="deco deco--arch about-arch" viewBox="0 0 240 320" focusable="false"><use href="#d-arch"/></svg>
+        <svg class="deco deco--sprig about-sprig" viewBox="0 0 200 480" focusable="false"><use href="#d-sprig"/></svg>
+        <div class="petals petals--about"><svg class="petal" viewBox="0 0 24 40" focusable="false"><use href="#d-petal"/></svg><svg class="petal" viewBox="0 0 24 40" focusable="false"><use href="#d-petal"/></svg><svg class="petal" viewBox="0 0 24 40" focusable="false"><use href="#d-petal"/></svg><svg class="petal" viewBox="0 0 24 40" focusable="false"><use href="#d-petal"/></svg></div>
+      </div>
       <div class="container about__grid">
         <div class="reveal">
           <p class="eyebrow">O kwiaciarni</p>
@@ -375,6 +433,12 @@
 
     <!-- ===== KONTAKT ===== -->
     <section class="section contact" id="kontakt" aria-labelledby="kontakt-title">
+      <div class="bg-decor" aria-hidden="true">
+        <svg class="deco deco--sprig contact-sprig-a" viewBox="0 0 200 480" focusable="false"><use href="#d-sprig"/></svg>
+        <svg class="deco deco--bloom contact-bloom" viewBox="0 0 140 140" focusable="false"><use href="#d-bloom"/></svg>
+        <span class="ring ring--a"></span>
+        <div class="petals petals--about"><svg class="petal" viewBox="0 0 24 40" focusable="false"><use href="#d-petal"/></svg><svg class="petal" viewBox="0 0 24 40" focusable="false"><use href="#d-petal"/></svg><svg class="petal" viewBox="0 0 24 40" focusable="false"><use href="#d-petal"/></svg></div>
+      </div>
       <div class="container">
         <div class="reveal">
           <p class="eyebrow">Kontakt</p>
@@ -490,6 +554,10 @@
 
   <!-- ===== STOPKA ===== -->
   <footer class="site-footer">
+      <div class="bg-decor" aria-hidden="true">
+        <svg class="deco deco--sprig footer-sprig" viewBox="0 0 200 480" focusable="false"><use href="#d-sprig"/></svg>
+        <svg class="deco deco--bloom footer-bloom" viewBox="0 0 140 140" focusable="false"><use href="#d-bloom"/></svg>
+      </div>
     <div class="container">
       <div class="footer__grid">
         <div class="footer__brand">

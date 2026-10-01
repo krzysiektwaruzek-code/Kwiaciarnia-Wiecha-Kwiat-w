@@ -61,6 +61,7 @@ Miejsca do uzupełnienia są oznaczone w `index.html` komentarzami `TODO(klient)
 | **Logo** | Podmień tekstowy wordmark w `.brand` i `assets/img/favicon.svg` (obecny favicon „W" jest tymczasowy). |
 | **Opinie** | Dodawaj wyłącznie prawdziwe, z imieniem/zgodą autora, albo osadź widget Google. |
 | **Social media, kod pocztowy, nagrody** | Po potwierdzeniu (lista w `docs/RESEARCH.md`) dodaj do stopki i JSON-LD (`sameAs`, `postalCode`). |
+| **Dekoracje tła** | Każda sekcja ma warstwę `.bg-decor` (gradienty, siatka kropek, gałązki, kontury kwiatów, okręgi, płatki). Rysunki to symbole `#d-sprig`, `#d-bloom`, `#d-arch`, `#d-petal` w sprite na górze `index.html`; pozycje i krycie są w sekcji „10. DEKORACJE TŁA" w `styles.css`. Aby coś wyłączyć, usuń element z `.bg-decor`. Płatki dryfują bardzo wolno, a przy `prefers-reduced-motion` stoją w miejscu. |
 | **Kolory** | Tokeny w `:root` na górze `assets/css/styles.css` (kontrast sprawdzony wg WCAG AA — po zmianie sprawdź ponownie). |
 | **Nowa pozycja oferty** | Skopiuj `<li class="offer-item">` w `#oferta` i dodaj `<option>` o tej samej wartości w `<select id="f-topic">`. |
 
@@ -70,7 +71,7 @@ Miejsca do uzupełnienia są oznaczone w `index.html` komentarzami `TODO(klient)
 - Semantyczny HTML, jeden `H1`, skip-link, widoczne style `:focus-visible`, obsługa klawiaturą (menu zamykane `Esc`), `aria-*` w menu i formularzu, kontrast WCAG AA.
 - `prefers-reduced-motion` wyłącza animacje; bez JavaScriptu cała treść jest widoczna.
 - Brak ciasteczek i trackerów. Mapa Google ładuje się dopiero po kliknięciu.
-- Waga: ok. 117 KB przy pierwszym wejściu (bez kompresji serwera).
+- Waga: ok. 130 KB przy pierwszym wejściu (bez kompresji serwera).
 
 ## Technologia
 

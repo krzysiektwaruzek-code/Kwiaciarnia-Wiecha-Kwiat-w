@@ -197,6 +197,7 @@ textarea {
 }
 .section {
   position: relative;
+  isolation: isolate;
   padding-block: var(--section-y);
 }
 .section--dark {
@@ -660,6 +661,7 @@ select.field__control {
 .hero {
   position: relative;
   isolation: isolate;
+  overflow-x: clip;
   margin-top: calc(var(--header-h) * -1);
   padding-block: calc(var(--header-h) + clamp(2rem, 6vw, 4.5rem)) clamp(3rem, 7vw, 5.5rem);
 }
@@ -1077,6 +1079,8 @@ select.field__control {
 /* Stopka */
 .site-footer {
   position: relative;
+  isolation: isolate;
+  overflow: hidden;
   padding-block: clamp(3rem, 6vw, 4.5rem) 2rem;
   background: var(--forest);
   color: var(--on-dark);
@@ -1206,6 +1210,14 @@ select.field__control {
   }
   50% {
     transform: translateY(-8px);
+  }
+}
+@keyframes petal-drift {
+  from {
+    transform: translate(0, 0) rotate(var(--r, 0deg));
+  }
+  to {
+    transform: translate(var(--dx, 14px), var(--dy, 26px)) rotate(calc(var(--r, 0deg) + 40deg));
   }
 }
 @keyframes bloom-in {
@@ -1348,4 +1360,288 @@ select.field__control {
 }
 .quick + .section {
   margin-top: clamp(3rem, 7vw, 5.5rem);
+}
+
+/* 10. DEKORACJE TŁA --------------------------------------------------------
+   Linearne gałązki, kontury kwiatów, okręgi i płatki. Wszystko jest ozdobą
+   (aria-hidden), leży pod treścią i nie wpływa na układ. */
+.dl {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.dl--fill {
+  fill: currentColor;
+  fill-opacity: 0.1;
+}
+.deco {
+  position: absolute;
+  display: block;
+  height: auto;
+  color: var(--forest-2);
+  opacity: 0.2;
+}
+.deco--sprig {
+  width: 12rem;
+  aspect-ratio: 200 / 480;
+}
+.deco--bloom {
+  width: 22rem;
+  aspect-ratio: 1;
+}
+.deco--arch {
+  width: 15rem;
+  aspect-ratio: 240 / 320;
+}
+.section--dark .deco,
+.site-footer .deco {
+  color: var(--on-dark);
+}
+.ring {
+  position: absolute;
+  aspect-ratio: 1;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  color: var(--forest-2);
+  opacity: 0.12;
+}
+.section--dark .ring {
+  color: var(--on-dark);
+  opacity: 0.09;
+}
+.ring--a {
+  width: 40rem;
+  right: -14rem;
+  top: 8rem;
+}
+.ring--b {
+  width: 26rem;
+  left: -10rem;
+  top: -8rem;
+  border-style: dashed;
+}
+
+/* Płatki (lekko dryfujące) */
+.petals {
+  position: absolute;
+  inset: 0;
+}
+.petal {
+  position: absolute;
+  width: var(--s, 22px);
+  height: auto;
+  aspect-ratio: 3 / 5;
+  fill: var(--c, var(--rose));
+  opacity: var(--o, 0.5);
+  transform: rotate(var(--r, 0deg));
+  animation: petal-drift var(--dur, 20s) ease-in-out var(--delay, 0s) infinite alternate;
+}
+
+/* — hero — */
+.hero-sprig-a {
+  left: -2.5rem;
+  bottom: -1rem;
+  width: 10rem;
+  transform: rotate(14deg);
+}
+.hero-sprig-b {
+  left: 47%;
+  bottom: -3rem;
+  width: 11rem;
+  opacity: 0.15;
+  transform: rotate(-10deg);
+}
+.hero-bloom {
+  right: -12rem;
+  top: -4rem;
+  width: 30rem;
+  color: var(--rose);
+  opacity: 0.14;
+  transform: rotate(-12deg);
+}
+.hero__art::before,
+.hero__art::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 47%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: -1;
+}
+.hero__art::before {
+  width: 132%;
+  border: 1px solid rgba(31, 51, 41, 0.16);
+}
+.hero__art::after {
+  width: 172%;
+  border: 1px dashed rgba(154, 61, 88, 0.24);
+}
+.petals--hero .petal:nth-child(1) { left: 6%;  top: 18%; --s: 26px; --c: var(--rose);    --o: 0.45; --r: 25deg;  --dur: 19s; --dx: 18px;  --dy: 30px; }
+.petals--hero .petal:nth-child(2) { left: 41%; top: 10%; --s: 18px; --c: #86a38b;         --o: 0.6;  --r: -30deg; --dur: 23s; --dx: -14px; --dy: 24px; --delay: -6s; }
+.petals--hero .petal:nth-child(3) { left: 55%; top: 52%; --s: 22px; --c: var(--blush-2);  --o: 0.75; --r: 70deg;  --dur: 21s; --dx: 20px;  --dy: -22px; --delay: -3s; }
+.petals--hero .petal:nth-child(4) { left: 91%; top: 14%; --s: 30px; --c: var(--rose);     --o: 0.4;  --r: -15deg; --dur: 26s; --dx: -20px; --dy: 34px; --delay: -9s; }
+.petals--hero .petal:nth-child(5) { left: 34%; top: 80%; --s: 20px; --c: var(--clay);     --o: 0.5;  --r: 140deg; --dur: 18s; --dx: 16px;  --dy: -20px; --delay: -4s; }
+.petals--hero .petal:nth-child(6) { left: 78%; top: 86%; --s: 24px; --c: #86a38b;         --o: 0.55; --r: 40deg;  --dur: 24s; --dx: -18px; --dy: -26px; --delay: -12s; }
+.petals--hero .petal:nth-child(7) { left: 2%;  top: 64%; --s: 16px; --c: var(--blush-2);  --o: 0.85; --r: -60deg; --dur: 22s; --dx: 14px;  --dy: 22px; --delay: -7s; }
+
+/* — oferta (ciemna) — */
+.offer-bloom {
+  right: 3.5rem;
+  top: 1.5rem;
+  width: 21rem;
+  color: var(--rose-light);
+  opacity: 0.16;
+  transform: rotate(14deg);
+}
+.offer .ring--a {
+  right: -3rem;
+  top: -5rem;
+  width: 34rem;
+}
+.offer-sprig {
+  left: -3rem;
+  bottom: -2rem;
+  width: 12rem;
+  opacity: 0.14;
+  transform: rotate(8deg);
+}
+.petals--dark .petal:nth-child(1) { left: 8%;  top: 20%; --s: 24px; --c: var(--rose-light); --o: 0.6; --r: 30deg;  --dur: 22s; --dx: 16px;  --dy: 28px; }
+.petals--dark .petal:nth-child(2) { left: 70%; top: 64%; --s: 20px; --c: var(--sage);       --o: 0.5;  --r: -40deg; --dur: 25s; --dx: -16px; --dy: 24px; --delay: -8s; }
+.petals--dark .petal:nth-child(3) { left: 90%; top: 12%; --s: 28px; --c: var(--blush);      --o: 0.5;  --r: 80deg;  --dur: 20s; --dx: -12px; --dy: 30px; --delay: -4s; }
+.petals--dark .petal:nth-child(4) { left: 32%; top: 90%; --s: 18px; --c: var(--rose-light); --o: 0.65; --r: -10deg; --dur: 27s; --dx: 18px;  --dy: -24px; --delay: -11s; }
+
+/* — o kwiaciarni — */
+.about-arch {
+  left: 3%;
+  bottom: 12%;
+  width: 14rem;
+  opacity: 0.17;
+}
+.about-sprig {
+  right: -2rem;
+  bottom: 10%;
+  width: 10rem;
+  opacity: 0.16;
+  transform: rotate(-10deg);
+}
+.petals--about .petal:nth-child(1) { left: 46%; top: 20%; --s: 22px; --c: var(--blush-2); --o: 0.7;  --r: 35deg;  --dur: 23s; --dx: 16px;  --dy: 26px; }
+.petals--about .petal:nth-child(2) { left: 6%;  top: 30%; --s: 18px; --c: #86a38b;        --o: 0.5;  --r: -50deg; --dur: 26s; --dx: 14px;  --dy: 22px; --delay: -9s; }
+.petals--about .petal:nth-child(3) { left: 92%; top: 78%; --s: 26px; --c: var(--rose);    --o: 0.3;  --r: 110deg; --dur: 21s; --dx: -16px; --dy: -24px; --delay: -5s; }
+.petals--about .petal:nth-child(4) { left: 24%; top: 88%; --s: 16px; --c: var(--clay);    --o: 0.45; --r: 15deg;  --dur: 24s; --dx: 12px;  --dy: -18px; --delay: -13s; }
+
+/* — kontakt — */
+.contact-sprig-a {
+  right: -3rem;
+  top: 6rem;
+  width: 11rem;
+  opacity: 0.15;
+  transform: rotate(18deg);
+}
+.contact-bloom {
+  left: -9rem;
+  bottom: 6rem;
+  width: 24rem;
+  color: var(--rose);
+  opacity: 0.1;
+}
+.contact .ring--a {
+  right: auto;
+  top: auto;
+  left: -12rem;
+  bottom: -14rem;
+  width: 34rem;
+}
+
+/* — stopka — */
+.site-footer .bg-decor::before {
+  background:
+    radial-gradient(40rem 24rem at 100% 0%, rgba(154, 61, 88, 0.32), transparent 62%),
+    radial-gradient(30rem 20rem at 0% 100%, rgba(183, 200, 181, 0.14), transparent 62%);
+}
+.site-footer .bg-decor::after {
+  display: none;
+}
+.footer-sprig {
+  right: 4%;
+  bottom: -3rem;
+  width: 12rem;
+  opacity: 0.14;
+  transform: rotate(-8deg);
+}
+.footer-bloom {
+  left: -8rem;
+  top: -6rem;
+  width: 22rem;
+  opacity: 0.07;
+}
+
+/* — mobile: mniej i mniejsze elementy — */
+@media (max-width: 759.98px) {
+  .deco--sprig {
+    width: 7.5rem;
+  }
+  .deco--bloom {
+    width: 16rem;
+  }
+  .deco--arch {
+    width: 9rem;
+  }
+  .hero-sprig-b,
+  .about-arch {
+    display: none;
+  }
+  .hero-bloom {
+    right: -6rem;
+    top: 3rem;
+    width: 13rem;
+  }
+  .offer-bloom {
+    right: -2rem;
+    top: 0.5rem;
+    width: 14rem;
+    opacity: 0.12;
+  }
+  .offer-sprig {
+    left: -4.5rem;
+    opacity: 0.1;
+  }
+  .offer .ring--a {
+    right: -9rem;
+    top: -6rem;
+    width: 24rem;
+  }
+  .hero__art::before {
+    width: 122%;
+  }
+  .hero__art::after {
+    display: none;
+  }
+  .ring--a {
+    width: 26rem;
+    right: -12rem;
+  }
+  /* płatki nie mogą lądować na tekście: zostają pojedyncze, w marginesach */
+  .petals .petal {
+    display: none;
+  }
+  .petals--hero .petal:nth-child(1) {
+    display: block;
+    left: 86%;
+    top: 9rem;
+  }
+  .petals--hero .petal:nth-child(6) {
+    display: block;
+    left: 90%;
+    top: 78%;
+  }
+  .petals--dark .petal:nth-child(3),
+  .petals--about .petal:nth-child(3) {
+    display: block;
+  }
 }
